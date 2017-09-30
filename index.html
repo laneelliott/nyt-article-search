@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body onload="myFunction()" style="margin:0;">
+  <div class ="background">
+    <div class="col-md-offset-2 col-md-8">
+      <div id="loader">
+      	 <div class="toast">
+            <img src="images/avocadoToastLogo.png" alt="holder" width="60%">
+      	 </div>
+      </div>
+  </div>
+</div>
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+      	<div class="container" style="text-align: left">
+  		  	<div class="mainText">
+  		  		<div class="jumbotron" style="background:none">
+  		  			<div class="row">
+  		  				<h1>Our site title.</h1>
+  		  			</div>
+  		  			<div class="row">
+  		  				<div class="col-md-6">
+  		  					<h2>
+  		  						Hello World
+  		  					</h2>
+  		  				</div>
+  		  				<div class="col-md-6">
+							<div class="form-group">
+  								<label for="search-term">search term : </label>
+  								<input type="text" class="form-control" id="search-term">
+							</div>
+							<div class="form-group">
+  								<label for="records">number of records to retrieve : </label>
+  								<input type="text" class="form-control" id="records">
+							</div>
+							<div class="form-group">
+  								<label for="start-year">start year : </label>
+  								<input type="text" class="form-control" id="start-year">
+							</div>
+							<div class="form-group">
+  								<label for="end-year">end year : </label>
+  								<input type="text" class="form-control" id="end-year">
+							</div>
+  		  					<br>
+  		  					<br>
+  		  					<button type="button" 
+  		  							class="btn btn-light"
+  		  							id="search-button">
+  		  							search
+  		  					</button>
+  		  					<button type="button" 
+  		  							class="btn btn-light"
+  		  							onclick="clearFunction()"
+  		  							id="clear-button">
+  		  							clear
+  		  					</button>
+  		  				 </div>
+  		  			</div>
+  		  		</div>
+  		  	</div>
+  		  	<div class="row">
+  		  		<div class="jumbotron" id="display-results">
+  		  			<h1> Results
+  		  			</h1>
+  		  		</div>
+  		  	</div>
+  		</div>
+	</div>
+
+<script type="text/javascript">
+
+    var myVar;
+
+    function myFunction() {
+      myVar = setTimeout(showPage, 3000);
+    }
+
+    function showPage() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("myDiv").style.display = "block";
+    }
+
+
+	var searchTerm;//.val() of search term box
+	var numRecords;
+	var startYear; //.val() of start year
+	var endYear;//.val() of end year
+	//convert searchTerm to search+term function
+	function sendAjax(){
+    // Built by LucyBot. www.lucybot.com
+    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=0e408faf58c6468fb8e1f6735d01ef19&q=" + searchTerm;
+    if (startYear !== undefined){
+        url += ("&begin_date="+startYear+'0101');
+    }
+    if (endYear !== undefined){
+        url += ("&end_date="+endYear+'0101');
+    }
+    $.ajax({
+      	url: url,
+      	method: 'GET',
+    }).done(function(result) {
+      	console.log(result);
+      	displayResults(result);
+    }).fail(function(err) {
+      throw err;
+    });
+	}
+	function displayResults(result){
+    	for(var i=0; i < result.response.docs.length; i++){
+    		var tempData = result.response.docs[i].headline.main;
+    		console.log(tempData);
+    		var title = $("<h1>").text(tempData);
+    		var resultsDump = $("#display-results");
+    		resultsDump.append(title);
+    	}
+	}
+    
+	$('#search-button').on('click', function(){
+    //Get user inputs
+    	searchTerm = $('#search-term').val();
+    	numRecords = $('#records').val();
+    	startYear = $('#start-year').val();
+    	endYear = $('#end-year').val();
+    	console.log($('#search-term').val());
+    	sendAjax();
+	})
+
+
+
+</script>
+
+	
+</body>
+</html>
