@@ -7,79 +7,85 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+
+
 </head>
+<body>
+
 <body onload="myFunction()" style="margin:0;">
   <div class ="background">
     <div class="col-md-offset-2 col-md-8">
       <div id="loader">
       	 <div class="toast">
-            <img src="images/avocadoToastLogo.png" alt="holder" width="60%">
+            <img src="images/avocadoToastLogo.png" alt="holder" width="100%">
       	 </div>
       </div>
   </div>
 </div>
-    <div style="display:none;" id="myDiv" class="animate-bottom">
-      	<div class="container" style="text-align: left">
-  		  	<div class="mainText">
-  		  		<div class="jumbotron" style="background:none">
-  		  			<div class="row">
-  		  				<h1>Our site title.</h1>
-  		  			</div>
-  		  			<div class="row">
-  		  				<div class="col-md-6">
-  		  					<h2>
-  		  						Hello World
-  		  					</h2>
-  		  				</div>
-  		  				<div class="col-md-6">
-							<div class="form-group">
-  								<label for="search-term">search term : </label>
-  								<input type="text" class="form-control" id="search-term">
-							</div>
-							<div class="form-group">
-  								<label for="records">number of records to retrieve : </label>
-  								<input type="text" class="form-control" id="records">
-							</div>
-							<div class="form-group">
-  								<label for="start-year">start year : </label>
-  								<input type="text" class="form-control" id="start-year">
-							</div>
-							<div class="form-group">
-  								<label for="end-year">end year : </label>
-  								<input type="text" class="form-control" id="end-year">
-							</div>
-  		  					<br>
-  		  					<br>
-  		  					<button type="button" 
-  		  							class="btn btn-light"
-  		  							id="search-button">
-  		  							search
-  		  					</button>
-  		  					<button type="button" 
-  		  							class="btn btn-light"
-  		  							onclick="clearFunction()"
-  		  							id="clear-button">
-  		  							clear
-  		  					</button>
-  		  				 </div>
-  		  			</div>
-  		  		</div>
-  		  	</div>
-  		  	<div class="row">
-  		  		<div class="jumbotron" id="display-results">
-  		  			<h1> Results
-  		  			</h1>
-  		  		</div>
-  		  	</div>
-  		</div>
-	</div>
 
+  <div class="row"> 		
+    <div class="background">
+    <div style="display:none;" id="myDiv" class="animate-slide">
+      <div class="col-6 col-sm-4" id="mainSidebar">
+        <div class="jumbotron" style="background:none" >
+          <img src="images/Vintage-Hipster-Team-Logo.png" alt="holder" width="80%" style="text-align: center">
+          <h1>
+            welcome to a <strong>different</strong> search experience
+          </h1>
+        </div>
+      </div>
+      <div class="col col-md-6">
+      </div>
+      </div>
+    </div>  
+  </div>
+
+
+
+<!--              <div class="form-group">
+                  <label for="search-term">search term : </label>
+                  <input type="text" class="form-control" id="search-term">
+              </div>
+              <div class="form-group">
+                  <label for="records">number of records to retrieve : </label>
+                  <input type="text" class="form-control" id="records">
+              </div>
+              <div class="form-group">
+                  <label for="start-year">start year : </label>
+                  <input type="text" class="form-control" id="start-year">
+              </div>
+              <div class="form-group">
+                  <label for="end-year">end year : </label>
+                  <input type="text" class="form-control" id="end-year">
+              </div>
+                  <br>
+                  <br>
+                  <button type="button" 
+                      class="btn btn-light"
+                      id="search-button">
+                      search
+                  </button>
+                  <button type="button" 
+                      class="btn btn-light"
+                      onclick="clearFunction()"
+                      id="clear-button">
+                      clear
+                  </button>
+                 </div>
+              </div>
+                  <div class="row">
+      <div class="jumbotron" id="display-results">
+
+      </div>
+    </div>
+  </div>
+-->
 <script type="text/javascript">
 
     var myVar;
 
     function myFunction() {
-      myVar = setTimeout(showPage, 3000);
+      myVar = setTimeout(showPage, 2000);
     }
 
     function showPage() {
